@@ -1,28 +1,46 @@
 {
     "cans": [
-    {
-        "id": 1,
-        "name": "Tuborg",
-        "path": "/assets/images/tuborg.png",
-        "baseColor": "#666666",
-        "scale": { "x": 0.9, "y": 0.9 },
-        "position": { "x": 0, "y": -0.5 }
-    },
-    {
-        "id": 2,
-        "name": "Miller",
-        "path": "/assets/images/miller.png",
-        "baseColor": "#1b3724",
-        "scale": { "x": 0.9, "y": 0.9 },
-        "position": { "x": 0, "y": -0.5 }
-    },
-    {
-        "id": 3,
-        "name": "Heineken",
-        "path": "/assets/images/heineken.png",
-        "baseColor": "#1b3724",
-        "scale": { "x": 0.9, "y": 0.9 },
-        "position": { "x": 0, "y": -0.5 }
-    }
-]
+        {
+            "id": 1,
+            "name": "Tuborg",
+            "path": "./assets/images/tuborg.png",
+            "baseColor": "#666666",
+            "scale": {
+                "x": 0.9,
+                "y": 0.9
+            },
+            "position": {
+                "x": 0,
+                "y": -0.5
+            }
+        },
+        {
+            "id": 2,
+            "name": "Miller",
+            "path": "./assets/images/miller.png",
+            "baseColor": "#1b3724",
+            "scale": {
+                "x": 0.9,
+                "y": 0.9
+            },
+            "position": {
+                "x": 0,
+                "y": -0.5
+            }
+        },
+        {
+            "id": 3,
+            "name": "Heineken",
+            "path": "./assets/images/heineken.png",
+            "baseColor": "#1b3724",
+            "scale": {
+                "x": 0.9,
+                "y": 0.9
+            },
+            "position": {
+                "x": 0,
+                "y": -0.5
+            }
+        }
+    ]
 }
