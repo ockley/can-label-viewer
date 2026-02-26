@@ -34,7 +34,7 @@ export class App {
         window.addEventListener('resize', () => this.onResize())
     }
     fetchCanData() {
-        fetch('/data/cans.json')
+        fetch('./data/cans.json')
             .then(response => response.json())
             .then(data => {
                 this.canData = data.cans
@@ -74,7 +74,7 @@ export class App {
         const scene = new THREE.Scene()
         scene.background = new THREE.Color(0x222222)
         const hdrLoader = new HDRLoader()
-        hdrLoader.load('/assets/hdr/pav_studio_03_1k.hdr', (environmentMap) => {
+        hdrLoader.load('./assets/hdr/pav_studio_03_1k.hdr', (environmentMap) => {
             environmentMap.mapping = THREE.EquirectangularReflectionMapping
             scene.environment = environmentMap
         })
