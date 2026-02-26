@@ -1,5 +1,6 @@
 {
   "name": "can-label-viewer",
+  "homepage": "https://ockley.github.io/can-label-viewer/",
   "private": true,
   "version": "0.9.0",
   "type": "module",
