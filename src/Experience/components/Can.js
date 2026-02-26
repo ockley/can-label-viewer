@@ -5,7 +5,8 @@ export class Can {
 
     constructor(sceneRef) {
         this.scene = sceneRef
-        this.path = '/assets/aluminium_can-_500ml/scene.gltf'
+        // Brug relativ path
+        this.path = './assets/aluminium_can-_500ml/scene.gltf'
         this.canMesh = null
         this.labelMesh = null
         this.firstCanLabel = null
