@@ -1,0 +1,27 @@
+export class Thumbnails {
+    constructor(data, container) {
+        this.container = container
+        this.data = data
+
+        this.thumbnails = []
+
+        this.createThumbnails()
+    }
+
+    createThumbnails() {
+        this.data.forEach((can, index) => {
+            const thumbnail = document.createElement('img')
+            thumbnail.src = can.path
+            thumbnail.alt = can.name
+            thumbnail.classList.add('thumbnail')
+            thumbnail.addEventListener('click', () => this.onThumbnailClick(can))
+            this.container.appendChild(thumbnail)
+            this.thumbnails.push(thumbnail)
+        })
+    }
+
+    onThumbnailClick(can) {
+        const event = new CustomEvent('canSelected', { detail: can })
+        window.dispatchEvent(event)
+    }
+}
