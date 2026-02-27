@@ -25,14 +25,17 @@ export class App {
 
         this.renderer.setAnimationLoop(() => this.render())
 
-        this.canData = null
-        this.can = null
+        this.canData = null // Data om dåserne, som hentes fra JSON-filen
+        this.can = null // Can-objektet, som repræsenterer 3D-modellen i scenen
+
+        // Start processen med at hente data (inden verden oprettes)
         this.fetchCanData()
 
 
         // Lyt efter resize
         window.addEventListener('resize', () => this.onResize())
     }
+
     fetchCanData() {
         fetch('./data/cans.json')
             .then(response => response.json())
@@ -40,22 +43,25 @@ export class App {
                 this.canData = data.cans
                 // console.log("Data om dåser er hentet:", this.canData)
 
-                // Opret en verden (pt kun en dåse)
+                // Data er kommet, så verden kan oprettes nu (pt kun en dåse)
                 this.createWorld()
 
-                this.can.firstCanLabel = this.canData[0] // Gem den første label i can-objektet, så vi kan sætte den når modellen er loaded
+                // Gem den første label i can-objektet 
+                // Vi ved ikke om dåsen er hentet men nu er objektet klar med førstemærkat
+                this.can.firstCanLabel = this.canData[0] 
 
                 // Opret thumbnails
                 const thumbnailContainer = document.getElementById('thumbnails')
                 this.thumbnails = new Thumbnails(this.canData, thumbnailContainer)
 
-                this.thumbnails.onThumbnailClick = (can) => {
-                    // Opdater 3D-modellen baseret på det valgte can
-                    console.log("Thumbnail klikket i App:", can)
+                // Lyt efter "canSelected" et eller andet sted i window-objektet
+                window.addEventListener('canSelected', (event) => {
+                    const can = event.detail
+                    // console.log("Thumbnail klikket i App (via CustomEvent):", can)
                     if (this.can) {
-                        this.updateCanLabel(can) // Opdater label, skala og position baseret på can-data
+                        this.updateCanLabel(can)
                     }
-                }
+                })
 
             })
             .catch(error => console.error("Kunne ikke hente data om dåser:", error))

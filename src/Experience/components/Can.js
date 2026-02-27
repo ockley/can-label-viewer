@@ -5,7 +5,6 @@ export class Can {
 
     constructor(sceneRef) {
         this.scene = sceneRef
-        // Brug relativ path
         this.path = './assets/aluminium_can-_500ml/scene.gltf'
         this.canMesh = null
         this.labelMesh = null
@@ -25,14 +24,16 @@ export class Can {
             // Led efter meshes vi kan sætte labels på
             this.model.traverse((child) => {
                 if (child.isMesh) {
-                    console.log("Found mesh:", child.name, child.material)
-
+                    // console.log("Mesh fundet:", child.name, child.material)
+                    
                     if (child.name.toLowerCase().includes('can')) {
+                        console.log("Materiale med 'can' fundet i:", child.name, child.material)
                         this.canMesh = child
                     } 
                 }
             })
 
+            // Sæt første label når modellen er loaded og materiale er fundet
             if (this.canMesh && this.firstCanLabel) {
                 this.setLabel(this.firstCanLabel.path)
                 this.setBaseColor(this.firstCanLabel.baseColor)
@@ -50,10 +51,10 @@ export class Can {
         texture.flipY = false
         texture.colorSpace = THREE.SRGBColorSpace
 
-        // canMesh er den del af modellen, vi vil sætte label på
+        // canMesh er den del af modellen der skal have sat label på
         if (this.canMesh) {
 
-            // Hvis der allerede er en label, fjerner vi den gamle før vi laver en ny
+            // Fjern den gamle label, hvis den allerede er sat
             if (this.labelMesh) {
                 this.canMesh.remove(this.labelMesh)
             }
